@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Личный кабинет') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        <div>Ваша реферальная ссылка: http://localhost/refer/{{ Auth::user()->refer }}</div>
+                    </x-nav-link>
                 </div>
             </div>
 
