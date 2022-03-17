@@ -5656,11 +5656,14 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+/* harmony import */ var _modules_refer_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/refer-link */ "./resources/js/modules/refer-link.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
+(0,_modules_refer_link__WEBPACK_IMPORTED_MODULE_1__["default"])();
 
 /***/ }),
 
@@ -5697,6 +5700,35 @@ window.Fancybox = _fancyapps_ui__WEBPACK_IMPORTED_MODULE_0__.Fancybox;
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/modules/refer-link.js":
+/*!********************************************!*\
+  !*** ./resources/js/modules/refer-link.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var referLink = document.querySelector('#refer-link > span');
+
+  if (referLink) {
+    referLink.addEventListener('click', function (e) {
+      var referLinkText = referLink.textContent.trim();
+      navigator.clipboard.writeText(referLinkText).then(function () {
+        new Fancybox([{
+          src: '<p>Ваша ссылка скопирована</p>',
+          type: 'html'
+        }]);
+      });
+    });
+  }
+});
 
 /***/ }),
 

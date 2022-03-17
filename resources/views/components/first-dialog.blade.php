@@ -28,7 +28,7 @@
         <li class="mb-2"> Получите справку.</li>
     </ol>
 
-    Справка будет иметь следующий вид:
-    <img class="w-full" src="{{asset('img/diagram.png')}}" alt="Диаграмма">
+    <p class="font-black text-xl">Справка будет иметь следующий вид:</p>
+    <img width="1000px" class="mx-auto pt-8" src="{{asset('img/diagram.jpg')}}" alt="Диаграмма">
 
 </div>
