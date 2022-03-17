@@ -16,10 +16,15 @@ class ReferTest extends TestCase
     {
         $user = User::factory()->create();
 
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+
         $link = url('') . '/refer/' . $user->refer;
 
         $response = $this->get($link);
 
-        $response->assertOk();
+        $response->assertRedirect(route('home'));
     }
 }

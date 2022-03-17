@@ -9,20 +9,6 @@
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                @auth
-                    <div id="refer-link" class="p-6 bg-white border-b border-gray-200 cursor-pointer">
-                        Ваша реферальная ссылка:
-                        <span class="text-green-600 font-semibold">
-                            {{ url('') }}/refer/{{ Auth::user()->refer }}
-                        </span>
-                    </div>
-                @endauth
-            </div>
-        </div>
-    </div>
-    <div class="py-8">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <button class="py-2 px-4 rounded bg-gray-500 text-white font-semibold">Ваш заработок на
                         сайте</button>

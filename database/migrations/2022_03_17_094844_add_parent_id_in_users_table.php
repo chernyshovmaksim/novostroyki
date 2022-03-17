@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('refer')->unique();
+            $table->integer('parent_id')->nullable();
         });
     }
 
@@ -26,6 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('parent_id');
         });
     }
 };

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ReferController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,14 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home.index');
-})->name('home');
+Route::get('/', [PageController::class, 'home'])->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [PageController::class, 'dashboard'])
+    ->middleware(['auth'])->name('dashboard');
 
-Route::get('/refer', [ReferController::class, 'index']);
+Route::get('/refer/{refer}', [ReferController::class, 'index']);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

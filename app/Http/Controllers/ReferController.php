@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class ReferController extends Controller
 {
-    public function index()
+    public function index($refer)
     {
-        response('', 200);
+        $user = User::where('refer', $refer)->get()->first();
+        if($user->count() > 0){
+            session(['refer' => $user->id]);
+        }
+        return redirect(route('home'));
     }
 }

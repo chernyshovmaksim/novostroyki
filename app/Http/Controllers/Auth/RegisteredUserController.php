@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Session;
 
 class RegisteredUserController extends Controller
 {
@@ -42,12 +43,21 @@ class RegisteredUserController extends Controller
             'email.unique' => 'Пользователь с таким Email уже зарегистрирован',
         ]);
 
+        if(Session::has('refer')){
+            $parent_user =  User::where('id', Session::get('refer'))->get()->first();
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'refer' => uniqid('', true),
             'password' => Hash::make($request->password),
         ]);
+
+        if($parent_user->count() > 0){
+            $user->parent_id = $parent_user->id;
+            $user->update();
+        }
 
         event(new Registered($user));
 
