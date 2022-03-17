@@ -48,6 +48,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $user->refer = $user->email;
+
         event(new Registered($user));
 
         Auth::login($user);

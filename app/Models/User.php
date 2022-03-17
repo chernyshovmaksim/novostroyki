@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -42,8 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getReferAttribute()
+    public function refer(): Attribute
     {
-        return uniqid($this->id);
+        return new Attribute(
+            get: fn ($value) => uniqid($value),
+            set: fn ($value) => $value,
+        );
     }
 }
