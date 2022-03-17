@@ -45,10 +45,9 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'refer' => uniqid('', true),
             'password' => Hash::make($request->password),
         ]);
-
-        $user->refer = $user->email;
 
         event(new Registered($user));
 
